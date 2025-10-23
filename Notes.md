@@ -327,3 +327,64 @@ Before Copilot can answer intelligently, the foundational data pipelines and con
 
 # Q&A
 
+# 🧩 Copilot Studio and MCP Integration Explained
+
+## ✅ Does Copilot Studio support MCP servers?
+
+Yes — **Copilot Studio now supports connecting directly to external MCP servers**.  
+This allows your Copilot to use **standardized tools** exposed by any MCP-compliant service without needing manual API connectors
+
+---
+
+## ⚙️ What’s built in (out-of-the-box)
+
+### 1. MCP Support in Copilot Studio (Preview / rolling out 2025)
+- Copilot Studio can **register MCP servers** as external tool sources.
+- Each MCP server exposes **tool definitions** that describe available operations.
+- The MCP protocol handles **discovery, authentication, and structured data exchange**.
+
+## 🧠 What this means for your setup
+
+You can architect your solution in two main ways.
+
+---
+
+### **A. Direct MCP Servers (Fully Standard)**
+- Build **one MCP server for Compass One** and another for **ESXP**.  
+- Connect each directly to **Copilot Studio**.  
+- No intermediary layer needed.
+
+**Pros**
+- Simple and clean  
+- Natively supported by Copilot Studio  
+
+**Cons**
+- No orchestration between systems  
+- Each MCP handles its own domain separately
+
+### **B. MCP Gateway (Aggregator Pattern)**
+
+- Build **one single MCP Gateway** that integrates both systems internally.  
+- The **Gateway itself is the MCP server** Copilot connects to.  
+- Inside, it calls **Compass One** and **ESXP** (via adapters or APIs).
+
+**Pros**
+- Central business rules and validation  
+- Cross-system joins and unified schema  
+- Single endpoint for Copilot Studio  
+
+**Cons**
+- Slightly more engineering effort  
+
+---
+
+## 🔧 Recommended Architecture
+
+| **Layer** | **Role** | **Example** |
+|------------|-----------|-------------|
+| **Copilot Studio** | Front-door chat + orchestration | Teams-based resourcing Copilot |
+| **MCP Gateway or Adapters** | Provides typed tools (e.g., `get_sow_details`, `search_available_resources`) | Custom service you host |
+| **Compass One / ESXP** | Systems of record | APIs or databases providing contracts, SOWs, and resource data |
+
+**Flow:**  
+Copilot Studio → MCP tools → MCP server executes → returns JSON → Copilot generates grounded answer.
