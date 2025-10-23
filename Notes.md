@@ -46,6 +46,18 @@ The team can enhance the solution by adding technical depth (detailed architectu
 
 ## Research
 
+## Important / To  Do
+   Include the other hackathon about SOW
+   Need to write the OKR / business impact
+
+   
+
+   
+
+## Objectives
+
+
+
 ### Target Idea 1 A 
 
 ```mermaid
