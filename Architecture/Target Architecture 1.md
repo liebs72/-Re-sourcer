@@ -389,7 +389,7 @@ Here is a structured **comparison** between the two Resourcer solution architect
 
 **Cons**
 
-* Although Copilot now includes semantic index, it is maily for SharePoint Online as a data source and basic graph data.
+* Although Copilot now includes semantic index, it is mainly for SharePoint Online as a data source and basic graph data.
 * Limited telemetry, scaling, and async orchestration.
 * Power Automate and connector throttling can add latency.
 * Harder to evolve into complex multi-agent scenarios.
